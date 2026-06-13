@@ -6,8 +6,8 @@ import { Award, BookOpen, GraduationCap, MapPin } from "lucide-react";
 
 export default function About() {
   const textVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+    hidden: { opacity: 0, x: -15 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
   };
 
   const graphicVariants = {
@@ -16,13 +16,13 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-white relative overflow-hidden">
+    <section id="about" className="py-10 sm:py-14 lg:py-20 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           
           {/* Left Column - Graphic/Illustration */}
           <motion.div
@@ -32,23 +32,20 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-5 relative flex justify-center"
           >
-            {/* Decorative background glow */}
-            <div className="absolute inset-0 bg-accent/20 rounded-2xl blur-xl transform rotate-3 scale-95 z-0" />
-            
-            <div className="relative w-full max-w-[400px] aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-primary/20 z-10 bg-primary/10 flex items-center justify-center">
+            <div className="relative w-full max-w-[280px] sm:max-w-[400px] aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-primary/15 z-10 bg-primary/10">
               <Image
                 src="/office.jpg"
                 alt="Shree Ram Classes classroom environment and office"
                 fill
-                className="object-cover transition-transform duration-500 hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                sizes="(max-width: 768px) 280px, 400px"
                 unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent pointer-events-none" />
 
-              <div className="absolute -bottom-6 -right-6 bg-accent border border-accent/20 px-6 py-4 rounded-xl shadow-lg text-center hidden sm:block z-20">
-                <span className="block font-montserrat font-black text-2xl text-primary">#1</span>
-                <span className="block font-inter font-bold text-xs text-primary/80 uppercase tracking-widest">Arts Choice in Patna</span>
+              <div className="absolute bottom-3 right-3 sm:-bottom-5 sm:-right-5 bg-accent border border-accent/20 px-4 py-2.5 sm:px-6 sm:py-4 rounded-xl shadow-lg text-center z-20">
+                <span className="block font-montserrat font-black text-lg sm:text-2xl text-primary">#1</span>
+                <span className="block font-inter font-bold text-xxs sm:text-xs text-primary/80 uppercase tracking-widest">Arts in Patna</span>
               </div>
             </div>
           </motion.div>
@@ -61,55 +58,52 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-7"
           >
-            <span className="font-inter font-bold text-xs text-secondary uppercase tracking-widest block mb-3">
+            <span className="font-inter font-bold text-xxs sm:text-xs text-secondary uppercase tracking-widest block mb-2">
               About Shree Ram Classes
             </span>
-            <h2 className="font-montserrat font-black text-3xl sm:text-4xl text-primary mb-6 leading-tight">
-              Transforming Arts &amp; Humanities Education in Patna
+            <h2 className="font-montserrat font-black text-xl sm:text-3xl lg:text-4xl text-primary mb-3 sm:mb-5 leading-tight">
+              Transforming Arts Education in Patna
             </h2>
-            <p className="font-inter font-medium text-base text-gray-600 leading-relaxed mb-6">
-              Founded with the vision of transforming Arts education in Bihar, Shree Ram Classes has become a trusted destination for Class 11 and 12 Humanities students.
-            </p>
-            <p className="font-inter font-medium text-base text-gray-600 leading-relaxed mb-8">
-              Through structured notes, digital learning systems, regular assessments, and mentorship from Alok Sir, students gain the confidence to excel academically and beyond. We focus on bridging the gap between textbook knowledge and board exam patterns, laying a strong foundation for future career paths and competitive exams.
+            <p className="font-inter font-medium text-sm text-gray-600 leading-relaxed mb-4 sm:mb-6">
+              Founded to transform Arts education in Bihar, Shree Ram Classes is the trusted destination for Class 11 &amp; 12 Humanities students. Through structured notes, digital learning, regular assessments, and direct mentorship from Alok Sir, students excel academically and beyond.
             </p>
 
             {/* Micro details grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex items-start space-x-3">
-                <div className="bg-primary/10 p-2 rounded-lg text-primary mt-1">
-                  <GraduationCap className="h-5 w-5" />
+            <div className="grid grid-cols-2 gap-3 sm:gap-5">
+              <div className="flex items-start space-x-2.5">
+                <div className="bg-primary/10 p-1.5 sm:p-2 rounded-lg text-primary mt-0.5 flex-shrink-0">
+                  <GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-bold text-gray-800 text-sm">Targeted Curriculum</h4>
-                  <p className="font-inter text-xs text-gray-500 mt-1">Syllabus-aligned structured notes and test series designed specifically for Bihar Board &amp; CBSE.</p>
+                  <h4 className="font-montserrat font-bold text-gray-800 text-xs sm:text-sm">Targeted Curriculum</h4>
+                  <p className="font-inter text-xxs sm:text-xs text-gray-500 mt-0.5">Bihar Board &amp; CBSE aligned notes &amp; tests.</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="bg-primary/10 p-2 rounded-lg text-primary mt-1">
-                  <Award className="h-5 w-5" />
+              <div className="flex items-start space-x-2.5">
+                <div className="bg-primary/10 p-1.5 sm:p-2 rounded-lg text-primary mt-0.5 flex-shrink-0">
+                  <Award className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-bold text-gray-800 text-sm">Personal Mentorship</h4>
-                  <p className="font-inter text-xs text-gray-500 mt-1">Direct feedback from Alok Sir on board answer-writing techniques and future career paths.</p>
+                  <h4 className="font-montserrat font-bold text-gray-800 text-xs sm:text-sm">Personal Mentorship</h4>
+                  <p className="font-inter text-xxs sm:text-xs text-gray-500 mt-0.5">Direct feedback from Alok Sir.</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="bg-primary/10 p-2 rounded-lg text-primary mt-1">
-                  <BookOpen className="h-5 w-5" />
+              <div className="flex items-start space-x-2.5">
+                <div className="bg-primary/10 p-1.5 sm:p-2 rounded-lg text-primary mt-0.5 flex-shrink-0">
+                  <BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-bold text-gray-800 text-sm">Rich Mock Tests</h4>
-                  <p className="font-inter text-xs text-gray-500 mt-1">Frequent evaluation reports, doubt-solving classes, and strategic revision cycles.</p>
+                  <h4 className="font-montserrat font-bold text-gray-800 text-xs sm:text-sm">Mock Tests</h4>
+                  <p className="font-inter text-xxs sm:text-xs text-gray-500 mt-0.5">Weekly evaluations &amp; revision cycles.</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="bg-primary/10 p-2 rounded-lg text-primary mt-1">
-                  <MapPin className="h-5 w-5" />
+              <div className="flex items-start space-x-2.5">
+                <div className="bg-primary/10 p-1.5 sm:p-2 rounded-lg text-primary mt-0.5 flex-shrink-0">
+                  <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <div>
-                  <h4 className="font-montserrat font-bold text-gray-800 text-sm">Central Location</h4>
-                  <p className="font-inter text-xs text-gray-500 mt-1">Located in Mahendru, Ashok Rajpath, highly accessible for students in Patna.</p>
+                  <h4 className="font-montserrat font-bold text-gray-800 text-xs sm:text-sm">Central Location</h4>
+                  <p className="font-inter text-xxs sm:text-xs text-gray-500 mt-0.5">Mahendru, Ashok Rajpath, Patna.</p>
                 </div>
               </div>
             </div>

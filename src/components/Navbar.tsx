@@ -46,8 +46,8 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-primary/95 shadow-lg backdrop-blur-md py-3 border-b border-white/10"
-            : "bg-transparent py-5"
+            ? "bg-primary/95 shadow-lg backdrop-blur-md py-2.5 border-b border-white/10"
+            : "bg-transparent py-3.5 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -95,7 +95,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:text-accent focus:outline-none p-1.5 rounded-lg border border-white/10"
+              className="text-white hover:text-accent focus:outline-none w-12 h-12 flex items-center justify-center rounded-xl border border-white/15 bg-white/5"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -113,37 +113,37 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/70 z-40 backdrop-blur-md"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-primary/95 border-l border-white/10 z-50 p-6 shadow-2xl flex flex-col justify-between backdrop-blur-md"
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-[#07253a]/98 border-l border-white/10 z-50 p-5 shadow-2xl flex flex-col justify-between backdrop-blur-xl"
             >
               <div>
-                <div className="flex justify-between items-center pb-6 border-b border-white/10">
+                <div className="flex justify-between items-center pb-4 border-b border-white/10">
                   <div className="flex items-center space-x-2">
                     <BookOpen className="h-5 w-5 text-accent" />
-                    <span className="font-montserrat font-bold text-sm text-white">SHREE RAM CLASSES</span>
+                    <span className="font-montserrat font-bold text-xs text-white uppercase tracking-wider">SHREE RAM CLASSES</span>
                   </div>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-white hover:text-accent"
+                    className="text-white hover:text-accent w-12 h-12 flex items-center justify-center rounded-xl border border-white/10 bg-white/5"
                     aria-label="Close menu"
                   >
                     <X className="h-5 w-5" />
                   </button>
                 </div>
 
-                <div className="mt-8 flex flex-col space-y-5">
+                <div className="mt-6 flex flex-col space-y-3">
                   {navLinks.map((link) => (
                     <a
                       key={link.name}
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.href)}
-                      className="font-inter font-semibold text-lg text-gray-200 hover:text-accent transition-colors duration-200 py-1"
+                      className="font-inter font-bold text-base text-gray-200 hover:text-accent transition-colors duration-200 py-3 px-4 rounded-xl bg-white/5 active:bg-white/10 border border-white/5 block"
                     >
                       {link.name}
                     </a>
@@ -151,11 +151,11 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="mt-auto">
+              <div className="mt-auto pt-6 border-t border-white/10">
                 <a
                   href="#contact"
                   onClick={(e) => handleNavClick(e, "#contact")}
-                  className="w-full inline-flex items-center justify-center px-6 py-3 rounded-xl bg-accent hover:bg-accent/90 text-primary font-inter font-bold text-base shadow-md transition-all duration-200"
+                  className="w-full inline-flex items-center justify-center h-12 rounded-xl bg-accent hover:bg-accent/90 text-primary font-inter font-extrabold text-sm shadow-md transition-all duration-200"
                 >
                   Book Demo Class
                 </a>
