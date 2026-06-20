@@ -9,43 +9,43 @@ export default function WhyChooseUs() {
   const features = [
     {
       icon: Tv,
-      title: "Digital Classroom Learning",
-      description: "Interactive smartboard displays and digital visual aids make learning history, geography, and polity highly engaging."
+      title: "Digital Classrooms",
+      description: "Interactive smartboards and visuals make visual learning highly engaging."
     },
     {
       icon: Users,
       title: "Expert Arts Faculty",
-      description: "Guided entirely by Alok Sir and expert academic assistants who understand the depth of humanities education."
+      description: "Guided directly by Alok Sir and specialized humanities mentors."
     },
     {
       icon: FileText,
       title: "Exam Focused Notes",
-      description: "Get handcrafted chapter summaries, concise diagrams, definitions, and model board questions."
+      description: "Handwritten summaries, maps, diagrams, and target board solutions."
     },
     {
       icon: IndianRupee,
       title: "Affordable Fees",
-      description: "Premium coaching quality made accessible for all Bihar Board and CBSE Humanities students."
+      description: "Premium education made accessible for BSEB & CBSE students."
     },
     {
       icon: ClipboardList,
-      title: "Regular Tests & feedback",
-      description: "Weekly mock tests with board pattern marking system to tracks strengths and weaknesses."
+      title: "Regular Mock Tests",
+      description: "Weekly mock tests graded on strict board marking patterns."
     },
     {
       icon: Compass,
-      title: "Personal Mentorship",
-      description: "One-on-one sessions with Alok Sir to resolve study blocks and keep motivational levels high."
+      title: "Personal Mentoring",
+      description: "Direct guidance from Alok Sir to resolve study blocks."
     },
     {
       icon: HelpCircle,
-      title: "Daily Doubt Sessions",
-      description: "Dedicated daily support hours where students can get their subject doubts resolved instantly."
+      title: "Daily Doubt Solving",
+      description: "Daily open doubt-solving slots to clear concepts instantly."
     },
     {
       icon: Target,
       title: "Board Exam Strategy",
-      description: "Proven writing tactics, time management formulas, and previous years' question (PYQ) dissection."
+      description: "Paper writing blueprints, time management formulas, and PYQs."
     }
   ];
 
@@ -65,14 +65,14 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 relative overflow-hidden">
+    <section className="py-10 md:py-16 bg-gray-50 relative overflow-hidden">
       {/* Background blobs */}
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Title Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <span className="font-inter font-bold text-xs text-secondary uppercase tracking-widest block mb-3">
             Why Shree Ram Classes
           </span>
@@ -90,7 +90,7 @@ export default function WhyChooseUs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6"
         >
           {features.map((feature, idx) => {
             const IconComponent = feature.icon;
@@ -99,15 +99,15 @@ export default function WhyChooseUs() {
                 key={idx}
                 variants={cardVariants}
                 whileHover={{ y: -6, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-                className="bg-white border border-gray-150 p-6 rounded-2xl shadow-sm hover:border-accent/30 transition-all duration-300 flex flex-col items-start group"
+                className="bg-white border border-gray-150 p-3.5 md:p-6 rounded-xl md:rounded-2xl shadow-sm hover:border-accent/30 transition-all duration-300 flex flex-col items-start group text-left"
               >
-                <div className="bg-primary/5 p-3 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 mb-5 border border-primary/10">
-                  <IconComponent className="h-6 w-6" />
+                <div className="bg-primary/5 p-2 md:p-3 rounded-lg md:rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 mb-2.5 md:mb-5 border border-primary/10">
+                  <IconComponent className="h-4.5 w-4.5 md:h-6 md:w-6" />
                 </div>
-                <h3 className="font-montserrat font-extrabold text-gray-800 text-lg leading-snug mb-3">
+                <h3 className="font-montserrat font-extrabold text-gray-800 text-xs sm:text-base md:text-lg leading-snug mb-1.5 md:mb-3">
                   {feature.title}
                 </h3>
-                <p className="font-inter font-medium text-sm text-gray-500 leading-relaxed mt-auto">
+                <p className="font-inter font-medium text-[10px] sm:text-xs md:text-sm text-gray-500 leading-relaxed mt-auto">
                   {feature.description}
                 </p>
               </motion.div>

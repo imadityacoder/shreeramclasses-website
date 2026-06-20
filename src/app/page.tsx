@@ -1,16 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import SocialProofStrip from "@/components/SocialProofStrip";
-import About from "@/components/About";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import MeetAlokSir from "@/components/MeetAlokSir";
 import Courses from "@/components/Courses";
-import LearningSystem from "@/components/LearningSystem";
-import StudentSuccess from "@/components/StudentSuccess";
-import Reviews from "@/components/Reviews";
-import Gallery from "@/components/Gallery";
+import GalleryPreview from "@/components/GalleryPreview";
+import PageOverviews from "@/components/PageOverviews";
 import FAQ from "@/components/FAQ";
-import Contact from "@/components/Contact";
+import AdmissionCTASection from "@/components/AdmissionCTASection";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 
@@ -21,19 +17,15 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Sections */}
+        {/* Condensed Homepage Sections */}
         <Hero />
-        <SocialProofStrip />
-        <About />
         <WhyChooseUs />
         <MeetAlokSir />
         <Courses />
-        <LearningSystem />
-        <StudentSuccess />
-        <Reviews />
-        <Gallery />
+        <GalleryPreview />
+        <PageOverviews />
         <FAQ />
-        <Contact />
+        <AdmissionCTASection />
       </main>
 
       {/* Footer Details */}
@@ -44,4 +36,3 @@ export default function Home() {
     </div>
   );
 }
-// 

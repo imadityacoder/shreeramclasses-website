@@ -2,109 +2,257 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, X, BookOpen, Map, Users, Award, Landmark } from "lucide-react";
+import { Eye, X } from "lucide-react";
 import Image from "next/image";
 
 interface GalleryItem {
   id: number;
   title: string;
-  category: "classroom" | "teaching" | "activities" | "events" | "environment";
-  icon: any;
-  color: string;
+  category: "classroom" | "batches" | "achievements" | "events";
   imageSrc: string;
+  description: string;
+}
+
+const galleryItems: GalleryItem[] = [
+  {
+    id: 1,
+    title: "Board Toppers Banner",
+    category: "achievements",
+    imageSrc: "/toppers_banner.jpeg",
+    description: "Felicitation banner of our high-scoring board performers in Arts."
+  },
+  {
+    id: 2,
+    title: "Class 12 Rank Holder",
+    category: "achievements",
+    imageSrc: "/ranker.jpeg",
+    description: "One of our top rankers celebrating board exam success."
+  },
+  {
+    id: 3,
+    title: "Achiever Felicitation - 1",
+    category: "achievements",
+    imageSrc: "/achievers-1.jpeg",
+    description: "Alok Sir congratulating student achievers with trophies and gifts."
+  },
+  {
+    id: 4,
+    title: "Achiever Felicitation - 2",
+    category: "achievements",
+    imageSrc: "/achievers-2.jpeg",
+    description: "Celebrating excellent percentages scored by our Humanities batch."
+  },
+  {
+    id: 5,
+    title: "Achiever Felicitation - 3",
+    category: "achievements",
+    imageSrc: "/achievers-3.jpeg",
+    description: "Trophy distribution for outstanding academic consistency."
+  },
+  {
+    id: 6,
+    title: "Achiever Felicitation - 4",
+    category: "achievements",
+    imageSrc: "/achievers-4.jpeg",
+    description: "Proud parents and students celebrating at Shree Ram Classes."
+  },
+  {
+    id: 7,
+    title: "Achiever Felicitation - 5",
+    category: "achievements",
+    imageSrc: "/achievers-5.jpeg",
+    description: "Rewarding effort and top marks in Geography and History papers."
+  },
+  {
+    id: 8,
+    title: "Active Smartboard Session",
+    category: "classroom",
+    imageSrc: "/classes-ongoing.jpeg",
+    description: "Students attending interactive map-making and lecture slides by Alok Sir."
+  },
+  {
+    id: 9,
+    title: "Ongoing Classroom Lecture",
+    category: "classroom",
+    imageSrc: "/classes-onging-2.jpeg",
+    description: "Focused classroom study environment in Ashok Rajpath, Patna."
+  },
+  {
+    id: 10,
+    title: "Office & Counseling Zone",
+    category: "classroom",
+    imageSrc: "/office.jpg",
+    description: "Admissions inquiry office and one-on-one student counseling cabin."
+  },
+  {
+    id: 11,
+    title: "Student Batch 2022 - 2024",
+    category: "batches",
+    imageSrc: "/batch-students-2022-2024.jpeg",
+    description: "Group photo of our graduated batch of Humanities toppers."
+  },
+  {
+    id: 12,
+    title: "Student Batch 2024 - 2025",
+    category: "batches",
+    imageSrc: "/batch-students-2024-2025.jpeg",
+    description: "Active Class 12 batch prepared for Board and CUET exams."
+  },
+  {
+    id: 13,
+    title: "Student Batch 2024 - 2026",
+    category: "batches",
+    imageSrc: "/batch-students-2024-2026.jpeg",
+    description: "Foundation Class 11 batch students under mentoring."
+  },
+  {
+    id: 14,
+    title: "Annual Topper Celebration",
+    category: "events",
+    imageSrc: "/celebration.jpeg",
+    description: "Cake-cutting ceremony and celebrations with students and Alok Sir."
+  },
+  {
+    id: 15,
+    title: "Topper Felicitation Ceremony",
+    category: "events",
+    imageSrc: "/celebration-2.jpeg",
+    description: "Group photograph of awardees during felicitation day."
+  },
+  {
+    id: 16,
+    title: "Gifting Event - Trophies & Rewards",
+    category: "events",
+    imageSrc: "/gifting-1.jpeg",
+    description: "Rewarding high scorers with study materials and trophies."
+  },
+  {
+    id: 17,
+    title: "Student Reward Ceremony",
+    category: "events",
+    imageSrc: "/gifting-2.jpeg",
+    description: "Alok Sir presenting a gift pack to a top Humanities scorer."
+  },
+  {
+    id: 18,
+    title: "Student Reward Ceremony 2",
+    category: "events",
+    imageSrc: "/gifting-3.jpeg",
+    description: "Encouraging junior batches to aim for 1st Division results."
+  },
+  {
+    id: 19,
+    title: "Syllabus Notes Distribution",
+    category: "events",
+    imageSrc: "/notes-distribution.jpeg",
+    description: "Distributing printed chapter notes and board maps to the batch."
+  }
+];
+
+const categories = [
+  { value: "all", label: "All Photos" },
+  { value: "classroom", label: "Classrooms & Office" },
+  { value: "batches", label: "Student Batches" },
+  { value: "achievements", label: "Achievements & Toppers" },
+  { value: "events", label: "Events & Distribution" }
+];
+
+function GalleryCard({
+  item,
+  onOpen,
+}: {
+  item: GalleryItem;
+  onOpen: (item: GalleryItem) => void;
+}) {
+  const [tapped, setTapped] = useState(false);
+
+  const handleTap = () => {
+    // On mobile: first tap shows overlay, second tap opens lightbox
+    if (tapped) {
+      onOpen(item);
+    } else {
+      setTapped(true);
+    }
+  };
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.2 }}
+      onClick={handleTap}
+      onMouseLeave={() => setTapped(false)}
+      className="group relative bg-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer border border-gray-200 aspect-[4/3] flex items-center justify-center"
+    >
+      <div className="w-full h-full relative transition-transform duration-300 group-hover:scale-103">
+        <Image
+          src={item.imageSrc}
+          alt={item.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 50vw, 25vw"
+          loading="lazy"
+        />
+      </div>
+
+      {/* Desktop: hover overlay | Mobile: tap overlay */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-primary/20 flex flex-col justify-between p-3.5 z-10 text-left transition-opacity duration-200 ${
+          tapped ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+      >
+        <div className="bg-accent/20 p-1.5 rounded-lg text-accent w-fit border border-accent/30 self-end">
+          <Eye className="h-4 w-4" />
+        </div>
+        <div>
+          <span className="font-inter font-bold text-[9px] text-accent uppercase tracking-wider block mb-0.5">
+            {item.category}
+          </span>
+          <h4 className="font-montserrat font-black text-xs text-white leading-tight">
+            {item.title}
+          </h4>
+          <p className="font-inter text-[10px] text-gray-200 mt-1 leading-snug line-clamp-2">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
-  const categories = [
-    { value: "all", label: "All Photos" },
-    { value: "classroom", label: "Classrooms" },
-    { value: "teaching", label: "Teaching Sessions" },
-    { value: "activities", label: "Student Activities" },
-    { value: "events", label: "Events & Awards" },
-    { value: "environment", label: "Institute Environment" }
-  ];
-
-  const items: GalleryItem[] = [
-    {
-      id: 1,
-      title: "Interactive Smartboard Classroom",
-      category: "classroom",
-      icon: BookOpen,
-      color: "from-blue-500 to-indigo-600",
-      imageSrc: "/class.jpg"
-    },
-    {
-      id: 2,
-      title: "Patna's Leading Arts Achievers (BSEB 2025)",
-      category: "events",
-      icon: Award,
-      color: "from-purple-500 to-pink-600",
-      imageSrc: "/achievers.jpg"
-    },
-    {
-      id: 3,
-      title: "Topper Felicitation & Celebration Day",
-      category: "events",
-      icon: Award,
-      color: "from-amber-500 to-orange-600",
-      imageSrc: "/celebration.jpg"
-    },
-    {
-      id: 4,
-      title: "Shree Ram Classes Board Toppers",
-      category: "events",
-      icon: Award,
-      color: "from-red-500 to-rose-600",
-      imageSrc: "/acheivers2.jpg"
-    },
-    {
-      id: 5,
-      title: "Student Counseling & Study Office Zone",
-      category: "environment",
-      icon: Landmark,
-      color: "from-sky-500 to-blue-600",
-      imageSrc: "/office.jpg"
-    },
-    {
-      id: 6,
-      title: "Off-Campus Seminar & Student Activities",
-      category: "activities",
-      icon: Users,
-      color: "from-emerald-500 to-teal-600",
-      imageSrc: "/offcampus.jpg"
-    }
-  ];
-
-  const filteredItems = activeCategory === "all" 
-    ? items 
-    : items.filter(item => item.category === activeCategory);
+  const filteredItems = activeCategory === "all"
+    ? galleryItems
+    : galleryItems.filter(item => item.category === activeCategory);
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-10 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="font-inter font-bold text-xs text-secondary uppercase tracking-widest block mb-3">
-            Life at Institute
+        {/* Header Filters */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="font-inter font-bold text-xs text-secondary uppercase tracking-widest block mb-2">
+            Life at Shree Ram
           </span>
-          <h2 className="font-montserrat font-black text-3xl sm:text-4xl text-primary mb-4 leading-tight">
-            Institute Gallery &amp; Environment
+          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-primary mb-3 leading-tight">
+            Institute Gallery &amp; Achievements
           </h2>
-          <p className="font-inter font-medium text-base text-gray-500 leading-relaxed">
-            Explore our state-of-the-art visual classrooms, interactive learning seminars, library, and achiever award celebrations in Patna.
+          <p className="font-inter font-medium text-xs sm:text-sm text-gray-500 leading-relaxed max-w-md mx-auto">
+            Explore our visual classrooms, topper felicitation ceremonies, study material distribution, and active student batches in Patna.
           </p>
 
           {/* Filters List */}
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <div className="mt-6 flex flex-wrap justify-center gap-1.5 md:gap-2">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => setActiveCategory(cat.value)}
-                className={`px-4.5 py-2 rounded-full font-inter font-semibold text-xs transition-all duration-200 border ${
+                className={`px-3 py-1.5 rounded-full font-inter font-bold text-[10px] sm:text-xs transition-all border ${
                   activeCategory === cat.value
                     ? "bg-primary text-white border-primary shadow-sm"
                     : "bg-gray-50 text-gray-500 border-gray-200 hover:text-gray-800 hover:bg-gray-100"
@@ -116,61 +264,31 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Masonry-Style Grid */}
+        {/* Mobile hint */}
+        <p className="text-center text-[10px] font-inter text-gray-400 mb-4 md:hidden">
+          Tap once to preview · Tap again to expand
+        </p>
+
+        {/* Responsive Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
         >
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => {
-              const IconComp = item.icon;
-              return (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  key={item.id}
-                  onClick={() => setSelectedItem(item)}
-                  className="group relative bg-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md cursor-pointer border border-gray-150 aspect-[4/3] flex items-center justify-center"
-                >
-                  {/* Real Image */}
-                  <div className="w-full h-full relative transition-transform duration-500 group-hover:scale-105">
-                    <Image
-                      src={item.imageSrc}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      unoptimized
-                    />
-                  </div>
-
-                  {/* Dark Overlay on Hover */}
-                  <div className="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-6 z-10">
-                    <div className="bg-accent/20 p-2 rounded-lg text-accent w-fit border border-accent/30 self-end">
-                      <Eye className="h-5 w-5" />
-                    </div>
-                    <div className="text-left">
-                      <span className="font-inter font-bold text-xs text-accent uppercase tracking-wider block mb-1">
-                        {item.category}
-                      </span>
-                      <h4 className="font-montserrat font-extrabold text-white text-base leading-snug">
-                        {item.title}
-                      </h4>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {filteredItems.map((item) => (
+              <GalleryCard
+                key={item.id}
+                item={item}
+                onOpen={setSelectedItem}
+              />
+            ))}
           </AnimatePresence>
         </motion.div>
 
-        {/* Lightbox Popups */}
+        {/* Lightbox */}
         <AnimatePresence>
           {selectedItem && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -180,46 +298,44 @@ export default function Gallery() {
               />
 
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
+                initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
-                className="bg-primary/95 border border-white/10 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative z-10"
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="bg-primary/95 border border-white/10 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative z-10"
               >
-                {/* Header detail */}
-                <div className="flex justify-between items-center px-6 py-4 border-b border-white/10">
-                  <h3 className="font-montserrat font-bold text-sm text-white">{selectedItem.title}</h3>
+                {/* Header */}
+                <div className="flex justify-between items-center px-4 py-3 border-b border-white/10">
+                  <h3 className="font-montserrat font-extrabold text-xs text-white">{selectedItem.title}</h3>
                   <button
                     onClick={() => setSelectedItem(null)}
                     className="text-white hover:text-accent p-1"
                     aria-label="Close lightbox"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-4 w-4" />
                   </button>
                 </div>
 
-                {/* Image display container */}
+                {/* Image */}
                 <div className="relative aspect-[4/3] w-full bg-[#0A2E46]/30">
                   <Image
                     src={selectedItem.imageSrc}
                     alt={selectedItem.title}
                     fill
                     className="object-contain"
-                    sizes="(max-width: 1024px) 100vw, 800px"
-                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 600px"
+                    priority
                   />
                 </div>
 
-                {/* Footer label details */}
-                <div className="bg-[#0A2E46] px-6 py-4 flex justify-between items-center">
-                  <span className="font-inter font-bold text-xs text-accent uppercase tracking-widest">
+                {/* Description */}
+                <div className="bg-[#0A2E46] p-4 text-left">
+                  <span className="font-inter font-bold text-[9px] text-accent uppercase tracking-widest block mb-1">
                     Category: {selectedItem.category}
                   </span>
-                  <button
-                    onClick={() => setSelectedItem(null)}
-                    className="font-inter font-semibold text-xs text-white hover:text-accent"
-                  >
-                    Close
-                  </button>
+                  <p className="font-inter text-xs text-gray-200 leading-relaxed">
+                    {selectedItem.description}
+                  </p>
                 </div>
               </motion.div>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Star, Phone, CheckCircle, Video, Users } from "lucide-react";
+import { Phone, Users, ShieldCheck, GraduationCap } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -10,152 +10,162 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { type: "spring" as const, stiffness: 100, damping: 15 } },
   };
 
   const imageVariants = {
-    hidden: { scale: 0.95, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.8, ease: "easeOut" as const } },
+    hidden: { scale: 0.98, opacity: 0 },
+    visible: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: "easeOut" as const } },
   };
 
-  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToAdmission = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const contactSection = document.querySelector("#contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+    const admissionSection = document.getElementById("admission");
+    if (admissionSection) {
+      admissionSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="relative bg-gradient-to-br from-primary via-secondary to-primary-hover min-h-[75vh] md:min-h-screen pt-20 pb-8 md:pt-28 md:pb-16 flex items-center overflow-hidden">
+    <section id="home" className="relative bg-gradient-to-br from-primary via-secondary to-primary-hover pt-24 pb-6 md:pt-32 md:pb-12 flex items-center overflow-hidden min-h-[60vh] md:min-h-[85vh]">
+      {/* Background Image Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/hero_section_bg.jpeg"
+          alt="Shree Ram Classes Patna Background"
+          fill
+          priority
+          className="object-cover opacity-50"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/75 via-secondary/65 to-primary-hover/75" />
+      </div>
+
       {/* Decorative background glows */}
-      <div className="absolute top-1/4 left-0 w-80 h-80 bg-accent/20 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-accent/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-64 h-64 bg-accent/20 rounded-full blur-[80px] pointer-events-none z-10" />
+      <div className="absolute bottom-10 right-0 w-80 h-80 bg-accent/15 rounded-full blur-[100px] pointer-events-none z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+
           {/* Left Text Column */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="lg:col-span-7 flex flex-col justify-center text-left"
           >
             {/* Accent Topper */}
-            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/30 text-accent px-3 py-1 rounded-full w-fit mb-4 md:mb-6">
+            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/30 text-accent px-2.5 py-1 rounded-full w-fit mb-3">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="font-inter font-bold text-xxs uppercase tracking-wider">Admissions Open 2026-27</span>
+              <span className="font-inter font-bold text-[10px] uppercase tracking-wider">Admissions Open 2026-27</span>
             </motion.div>
 
-            {/* Main Headline */}
-            <motion.h1 
+            {/* Main Headline (Max 2 lines) */}
+            <motion.h1
               variants={itemVariants}
-              className="font-montserrat font-black text-2xl sm:text-5xl lg:text-6xl text-white leading-tight tracking-tight mb-4 md:mb-6"
+              className="font-montserrat font-black text-2xl sm:text-4xl lg:text-5xl text-white leading-tight tracking-tight mb-3"
             >
-              Patna&apos;s Leader in <span className="text-accent underline decoration-accent/30 underline-offset-4 sm:underline-offset-8">Arts Education</span>
+              Patna&apos;s Leader in <span className="text-accent underline decoration-accent/30 underline-offset-4 sm:underline-offset-6">Arts Education</span>
             </motion.h1>
 
             {/* Subheadline */}
-            <motion.p 
+            <motion.p
               variants={itemVariants}
-              className="font-inter font-medium text-xs sm:text-lg text-gray-200 leading-relaxed mb-6 md:mb-8 max-w-xl"
+              className="font-inter font-medium text-sm sm:text-base text-gray-200 leading-relaxed mb-5 max-w-xl"
             >
-              Join hundreds of board aspirants learning directly from Alok Sir through structured notes, digital classrooms, and result-oriented coaching in Patna.
+              Join board aspirants learning directly from Alok Kumar Singh through visual classrooms, expert notes, and result-oriented mentoring.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
-              className="flex flex-row items-center gap-3 mb-6 md:mb-10 w-full"
+              className="flex flex-row items-center gap-3 mb-5 md:mb-6 w-full max-w-md"
             >
               <a
-                href="#contact"
-                onClick={handleScrollToContact}
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 sm:px-8 h-12 rounded-xl bg-accent hover:bg-accent/90 text-primary font-inter font-extrabold text-xs sm:text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 text-center"
+                href="#admission"
+                onClick={handleScrollToAdmission}
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 h-11 rounded-xl bg-accent hover:bg-accent/90 text-primary font-inter font-extrabold text-xs sm:text-sm shadow-md hover:-translate-y-0.5 transition-all duration-150 text-center"
               >
-                Book Free Demo
+                Admission Inquiry
               </a>
               <a
                 href="tel:+917779977725"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 sm:px-8 h-12 rounded-xl bg-white/10 hover:bg-white/15 text-white font-inter font-bold text-xs sm:text-base border border-white/20 hover:border-white/40 transition-all duration-200 text-center"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 h-11 rounded-xl bg-white/10 hover:bg-white/15 text-white font-inter font-bold text-xs sm:text-sm border border-white/20 hover:border-white/40 transition-all duration-150 text-center"
               >
-                <Phone className="h-4 w-4 mr-1 text-accent flex-shrink-0" />
+                <Phone className="h-3.5 w-3.5 mr-1.5 text-accent flex-shrink-0" />
                 Call Helpline
               </a>
             </motion.div>
 
-            {/* Trust Badges grid */}
-            <motion.div 
+            {/* Trust Badges grid using verified info */}
+            <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 gap-3 md:gap-4 border-t border-white/10 pt-4 md:pt-8 max-w-xl"
+              className="grid grid-cols-2 gap-3 border-t border-white/10 pt-4 max-w-xl"
             >
               <div className="flex items-center space-x-2">
-                <div className="bg-accent/10 p-1.5 rounded-lg flex-shrink-0">
-                  <Star className="h-4 w-4 text-accent fill-accent" />
+                <div className="bg-accent/10 p-1.5 rounded-lg flex-shrink-0 text-accent">
+                  <GraduationCap className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="block font-montserrat font-bold text-xxs sm:text-base text-white">5.0 Star Rating</span>
-                  <span className="block font-inter text-xxs text-gray-400">590+ Google Reviews</span>
+                  <span className="block font-montserrat font-bold text-xs sm:text-sm text-white">1st Division Guaranteed</span>
+                  <span className="block font-inter text-[10px] text-gray-400">Our primary academic mission</span>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="bg-accent/10 p-1.5 rounded-lg flex-shrink-0">
-                  <Users className="h-4 w-4 text-accent" />
+                <div className="bg-accent/10 p-1.5 rounded-lg flex-shrink-0 text-accent">
+                  <Users className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="block font-montserrat font-bold text-xxs sm:text-base text-white">Thousands Guided</span>
-                  <span className="block font-inter text-xxs text-gray-400">Patna&apos;s trusted mentor</span>
+                  <span className="block font-montserrat font-bold text-xs sm:text-sm text-white">6 Yrs Experience</span>
+                  <span className="block font-inter text-[10px] text-gray-400">Led by Alok Kumar Singh</span>
                 </div>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Image Column - Hidden on mobile, visible on tablet/desktop */}
-          <motion.div 
+          {/* Right Image Column */}
+          <motion.div
             variants={imageVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-5 hidden md:flex justify-center relative"
+            className="lg:col-span-5 hidden sm:flex justify-center relative"
           >
             {/* Background glow circle */}
-            <div className="absolute inset-0 bg-accent/25 rounded-2xl blur-2xl transform rotate-3 scale-95 z-0" />
-            
-            <div className="relative w-full max-w-[450px] aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 z-10 bg-primary/40 flex items-center justify-center">
+            <div className="absolute inset-0 bg-accent/20 rounded-2xl blur-xl transform rotate-3 scale-95 z-0" />
+
+            <div className="relative w-full max-w-[380px] aspect-square rounded-2xl overflow-hidden shadow-xl border-2 border-white/10 z-10 bg-primary/40 flex items-center justify-center">
               <Image
-                src="/class.jpg"
+                src="/classes-ongoing.jpeg"
                 alt="Alok Sir teaching Arts class at Shree Ram Classes Patna"
                 fill
                 priority
-                className="object-cover transition-transform duration-500 hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 450px"
-                unoptimized
+                className="object-cover transition-transform duration-500 hover:scale-103"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
               {/* Overlay with subtle visual glow */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent pointer-events-none" />
-              
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent pointer-events-none" />
+
               {/* Overlapping interactive badge */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, type: "spring" }}
-                className="absolute bottom-4 left-4 right-4 bg-primary/90 backdrop-blur-md border border-white/10 p-3.5 rounded-xl flex items-center space-x-3 shadow-lg"
+                transition={{ delay: 0.4 }}
+                className="absolute bottom-3 left-3 right-3 bg-primary/95 backdrop-blur-sm border border-white/10 p-2.5 rounded-xl flex items-center space-x-2.5 shadow-md"
               >
-                <div className="h-2 w-2 rounded-full bg-emerald-500 animate-ping absolute top-2 right-2" />
-                <div className="bg-accent text-primary font-black rounded-lg text-xs px-2.5 py-1.5 uppercase font-montserrat tracking-wider">
-                  Live
+                <div className="bg-accent text-primary font-black rounded-lg text-[9px] px-2 py-1 uppercase font-montserrat tracking-wider">
+                  Live Class
                 </div>
                 <div className="text-left">
-                  <span className="font-montserrat font-bold text-white text-sm block">Interactive smartboard setup</span>
-                  <span className="font-inter text-xs text-gray-300">Modern visual education in action</span>
+                  <span className="font-montserrat font-bold text-white text-xs block">Smartboard visual setups</span>
+                  <span className="font-inter text-[10px] text-gray-300">Active classroom environment</span>
                 </div>
               </motion.div>
             </div>

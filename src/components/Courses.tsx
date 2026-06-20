@@ -1,192 +1,177 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Check, Award, ArrowRight, BookMarked, Layers } from "lucide-react";
+import { motion } from "framer-motion";
+import { Clock, Calendar, Check, BookOpen, CreditCard, ChevronRight } from "lucide-react";
 
 export default function Courses() {
-  const [activeTab, setActiveTab] = useState<"class11" | "class12">("class12");
-
-  const class11Courses = [
+  const courses = [
     {
-      title: "History Mastery",
-      subjects: ["Ancient Civilizations", "Medieval Indian History", "World Empires", "Early Societies"],
-      tag: "Foundation",
-      description: "Building strong conceptual frameworks of historical timelines and civilizations to secure basic conceptual clarity."
+      title: "11th Arts Foundation",
+      duration: "2 Years Course",
+      timings: "07:00 AM - 09:00 AM",
+      fees: {
+        total: "₹5000 Total",
+        monthly: "₹500 Monthly",
+      },
+      badge: "Foundation Batch",
+      features: [
+        "Comprehensive History Foundations",
+        "Polity, Geography & Sociology basics",
+        "Visual smartboard answer mapping",
+        "Handwritten notes & chapter summary PDFs",
+        "Monthly evaluations & strategy sessions"
+      ],
+      color: "border-primary/20 hover:border-primary",
+      bgAccent: "bg-primary/5 text-primary",
     },
     {
-      title: "Geography & Map Work",
-      subjects: ["Physical Geography", "Indian Geography", "Map Drawing & Analysis", "Climatic Studies"],
-      tag: "Visual Classrooms",
-      description: "Visual exploration of physical geography with practical smartboard map-marking sessions."
+      title: "12th Arts Board Special",
+      duration: "2 Years Course",
+      timings: "09:00 AM - 11:00 AM OR 05:00 PM - 07:00 PM",
+      fees: {
+        total: "₹7000 Total",
+        monthly: "₹600 Monthly",
+      },
+      badge: "Board Exam Focused",
+      features: [
+        "Rigorous themes in Indian History & Geography",
+        "Politics in India & Contemporary world politics",
+        "Weekly mock board answer writing tests",
+        "Handwritten board-specific notes with diagrams",
+        "Model papers & previous years' question solving"
+      ],
+      color: "border-accent/40 hover:border-accent shadow-md",
+      bgAccent: "bg-accent/10 text-accent border border-accent/20",
     },
     {
-      title: "Political Science Basics",
-      subjects: ["Indian Constitution at Work", "Political Theory", "Democratic Institutions", "Rights & Duties"],
-      tag: "Concept Heavy",
-      description: "Detailed dissection of the Indian constitution, institutions, and core political theory."
-    },
-    {
-      title: "Introductory Economics & Sociology",
-      subjects: ["Development Economics", "Indian Society Structure", "Social Institutions", "Statistical Methods"],
-      tag: "Exam Focused",
-      description: "Fundamental principles of economics and structured study of society dynamics in India."
+      title: "CUET Preparation (Integrated)",
+      duration: "2 Years Program",
+      timings: "Special Weekend Batches",
+      fees: {
+        total: "Integrated with Boards",
+        monthly: "No Extra Fees",
+      },
+      badge: "University Entrance",
+      features: [
+        "Humanities Domain prep (History, Geography, Polity)",
+        "NTA-pattern MCQ mock tests on computers",
+        "General test preparation (Aptitude & Reasoning)",
+        "Current affairs briefings & PDF handouts",
+        "Personal guidance for Central University admission"
+      ],
+      color: "border-secondary/20 hover:border-secondary",
+      bgAccent: "bg-secondary/5 text-secondary",
     }
   ];
 
-  const class12Courses = [
-    {
-      title: "History Board Prep",
-      subjects: ["Themes in Indian History I, II, III", "Nationalist Movements", "Archaeological Findings", "Complete Map Work"],
-      tag: "Most Popular",
-      description: "Intense, result-oriented coverage of the entire history syllabus with mock answer writing exercises."
-    },
-    {
-      title: "Political Science & Global Politics",
-      subjects: ["Contemporary World Politics", "Politics in India Since Independence", "Foreign Policy Analysis", "PYQ Dissections"],
-      tag: "Board Special",
-      description: "Dissecting Indian politics since independence and contemporary international events for board exam success."
-    },
-    {
-      title: "Human Geography Mastery",
-      subjects: ["Fundamentals of Human Geography", "People and Economy (India)", "Spatial Mapping Practice", "Model Test Solving"],
-      tag: "Scoring Booster",
-      description: "Maxing out board scores through perfect visual map drawings and geographic terminologies."
-    },
-    {
-      title: "Macroeconomics & Society Studies",
-      subjects: ["National Income Accounting", "Money and Banking", "Social Change & Development", "Government Budgets"],
-      tag: "Analytical Focus",
-      description: "Mastering complex economic equations and structural aspects of development in Indian society."
-    }
-  ];
-
-  const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToAdmission = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const contactSection = document.querySelector("#contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+    const admissionSection = document.getElementById("admission");
+    if (admissionSection) {
+      admissionSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="courses" className="py-24 bg-white relative overflow-hidden">
-      {/* Decorative background glow */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="courses" className="py-12 md:py-16 bg-white relative overflow-hidden">
+      {/* Decorative background glows */}
+      <div className="absolute top-1/4 right-0 w-72 h-72 bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-inter font-bold text-xs text-secondary uppercase tracking-widest block mb-3">
-            Our Offerings
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="font-inter font-bold text-xs text-secondary uppercase tracking-widest block mb-2">
+            Our Courses
           </span>
-          <h2 className="font-montserrat font-black text-3xl sm:text-4xl text-primary mb-4 leading-tight">
-            Premium Arts Courses for High Scorers
+          <h2 className="font-montserrat font-black text-2xl sm:text-3xl text-primary mb-3 leading-tight">
+            Premium Arts &amp; CUET Coaching
           </h2>
-          <p className="font-inter font-medium text-base text-gray-500 leading-relaxed">
-            Every course includes handwritten notes, visual smartboard classes, daily worksheets, test series, and strategy reviews with Alok Sir.
+          <p className="font-inter font-medium text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+            All batches include handwritten revision notes, smartboard visual lessons, weekly worksheets, and full access to Alok Sir.
           </p>
-
-          {/* Tab buttons */}
-          <div className="mt-10 inline-flex items-center bg-gray-100 p-1.5 rounded-full border border-gray-250">
-            <button
-              onClick={() => setActiveTab("class11")}
-              className={`relative px-6 py-2.5 rounded-full font-montserrat font-extrabold text-sm transition-all duration-300 ${
-                activeTab === "class11" ? "text-white" : "text-gray-500 hover:text-gray-800"
-              }`}
-            >
-              {activeTab === "class11" && (
-                <motion.span
-                  layoutId="active-tab"
-                  className="absolute inset-0 bg-primary rounded-full z-0"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">Class 11 Arts</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("class12")}
-              className={`relative px-6 py-2.5 rounded-full font-montserrat font-extrabold text-sm transition-all duration-300 ${
-                activeTab === "class12" ? "text-white" : "text-gray-500 hover:text-gray-800"
-              }`}
-            >
-              {activeTab === "class12" && (
-                <motion.span
-                  layoutId="active-tab"
-                  className="absolute inset-0 bg-primary rounded-full z-0"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">Class 12 Arts (Boards)</span>
-            </button>
-          </div>
         </div>
 
-        {/* Tab Content Panels */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
-            {(activeTab === "class11" ? class11Courses : class12Courses).map((course, idx) => (
-              <div
-                key={idx}
-                className="bg-gray-50 border border-gray-150 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex justify-between items-center mb-5">
-                    <div className="inline-flex items-center space-x-2 text-primary bg-primary/5 px-3 py-1 rounded-lg border border-primary/10">
-                      <BookMarked className="h-[18px] w-[18px] text-primary" />
-                      <span className="font-montserrat font-bold text-xs uppercase tracking-wider">Course Modules</span>
-                    </div>
-                    <span className="bg-accent/10 text-accent font-inter font-bold text-xs px-3 py-1 rounded-full border border-accent/20">
-                      {course.tag}
-                    </span>
-                  </div>
-
-                  <h3 className="font-montserrat font-black text-xl text-primary mb-3">
-                    {course.title}
-                  </h3>
-                  <p className="font-inter font-medium text-sm text-gray-500 leading-relaxed mb-6">
-                    {course.description}
-                  </p>
-
-                  <div className="border-t border-gray-200/60 pt-6 mb-8">
-                    <h4 className="font-montserrat font-bold text-gray-700 text-xs uppercase tracking-wider mb-4 flex items-center">
-                      <Layers className="h-4 w-4 text-accent mr-1.5" />
-                      Key Core Syllabus Topics
-                    </h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {course.subjects.map((sub, sIdx) => (
-                        <li key={sIdx} className="flex items-center space-x-2.5">
-                          <div className="h-[18px] w-[18px] rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0">
-                            <Check className="h-3 w-3" />
-                          </div>
-                          <span className="font-inter font-semibold text-xs text-gray-600">{sub}</span>
-                        </li>
-                      ))}
-                    </ul>
+        {/* Pricing Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          {courses.map((course, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              className={`bg-gray-50/50 border rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between hover:shadow-lg ${course.color}`}
+            >
+              <div>
+                {/* Header Tag */}
+                <div className="flex justify-between items-center mb-4">
+                  <span className={`font-inter font-bold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-full ${course.bgAccent}`}>
+                    {course.badge}
+                  </span>
+                  <div className="flex items-center space-x-1 text-gray-400">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span className="font-inter font-bold text-[10px] uppercase tracking-wider">{course.duration}</span>
                   </div>
                 </div>
 
-                <a
-                  href="#contact"
-                  onClick={handleScrollToContact}
-                  className="inline-flex items-center text-sm font-montserrat font-extrabold text-secondary hover:text-accent group transition-all duration-300 w-fit"
-                >
-                  Enroll in course
-                  <ArrowRight className="h-4 w-4 ml-1.5 transform group-hover:translate-x-1.5 transition-transform" />
-                </a>
+                {/* Title */}
+                <h3 className="font-montserrat font-black text-lg sm:text-xl text-primary mb-4">
+                  {course.title}
+                </h3>
+
+                {/* Batch Timings (Highly Visible) */}
+                <div className="bg-white border border-gray-150 p-3 rounded-xl mb-4 flex items-start space-x-2.5">
+                  <Clock className="h-4.5 w-4.5 text-accent flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="block font-montserrat font-bold text-[10px] text-gray-400 uppercase tracking-wider">Batch Timings</span>
+                    <span className="block font-inter font-extrabold text-xs text-primary mt-0.5">{course.timings}</span>
+                  </div>
+                </div>
+
+                {/* Pricing / Fees Cards */}
+                <div className="bg-primary/95 text-white p-4 rounded-xl mb-6 shadow-sm flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <CreditCard className="h-4.5 w-4.5 text-accent" />
+                    <div>
+                      <span className="block text-[9px] font-inter uppercase text-gray-300 font-bold tracking-wider">Fee Structure</span>
+                      <span className="block font-montserrat font-black text-sm text-white">{course.fees.total}</span>
+                    </div>
+                  </div>
+                  <div className="text-right border-l border-white/20 pl-4">
+                    <span className="block text-[9px] font-inter uppercase text-gray-300 font-bold tracking-wider">Monthly Option</span>
+                    <span className="block font-inter font-extrabold text-xs text-accent">{course.fees.monthly}</span>
+                  </div>
+                </div>
+
+                {/* Features Checklist */}
+                <div className="border-t border-gray-200/60 pt-4 mb-6">
+                  <ul className="space-y-2.5">
+                    {course.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start space-x-2">
+                        <div className="h-4.5 w-4.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 flex-shrink-0 mt-0.5">
+                          <Check className="h-3 w-3" />
+                        </div>
+                        <span className="font-inter font-semibold text-xs text-gray-600 leading-tight">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+
+              {/* Action Link */}
+              <a
+                href="#admission"
+                onClick={handleScrollToAdmission}
+                className="w-full inline-flex items-center justify-center py-2.5 px-4 rounded-xl border border-primary/20 text-primary hover:bg-primary hover:text-white font-inter font-extrabold text-xs uppercase tracking-wider transition-all duration-150 text-center"
+              >
+                Inquire Admission
+                <ChevronRight className="h-3.5 w-3.5 ml-1" />
+              </a>
+            </motion.div>
+          ))}
+        </div>
 
       </div>
     </section>
